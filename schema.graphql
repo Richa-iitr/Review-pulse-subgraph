@@ -1,6 +1,12 @@
-type ExampleEntity @entity {
+type ProductState @entity {
   id: ID!
-  count: BigInt!
-  productId: BigInt! # uint256
-  sender: Bytes! # address
+  productId: BigInt!
+  countReviews: BigInt!
+  reviewers: [String!]! 
+}
+
+type ThresholdChanged @entity {
+  id: ID! 
+  prevId: BigInt! 
+  threshold: BigInt!
 }
