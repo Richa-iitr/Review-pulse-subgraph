@@ -1,0 +1,26 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Universal
+    network: mumbai
+    source:
+      address: "0x0ADfEb1F05a91bE697947ec965aB2cd7A8a7FA0D"
+      abi: Universal
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - productReviewed
+        - thresholdChanged
+      abis:
+        - name: Universal
+          file: ./abis/Universal.json
+      eventHandlers:
+        - event: productReviewed(uint256,address)
+          handler: handleproductReviewed
+        - event: thresholdChanged(uint256)
+          handler: handlethresholdChanged
+      file: ./src/universal.ts
